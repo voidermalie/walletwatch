@@ -5,13 +5,21 @@ import formReducer, { initialState } from '../../reducer/formReducer';
 import { useReducer } from 'react';
 
 const Form = () => {
-  const [state, dispatch] = useReducer(formReducer, initialState);
+    const [state, dispatch] = useReducer(formReducer, initialState)
 
   const handleSelect = (selectedValue) => {
     console.log('Selected value:', selectedValue);
     dispatch({
       type: 'SELECT_CATEGORY',
       payload: selectedValue,
+    });
+  };
+
+
+  const handleInputChange = (e) => {
+    dispatch({
+      type: 'SET_INPUT',
+      payload: e.target.value
     });
   };
 
@@ -34,13 +42,13 @@ const Form = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <div className="input">
-          <Input />
+          <Input inputValue={state.input} handleInputChange={handleInputChange}/>
           <CategoryList
             onSelect={handleSelect}
             value={state.selectedCategory}
           />
         </div>
-        <button type="submit" onClick={() => {}}>
+        <button type="submit">
           Add
         </button>
       </form>
