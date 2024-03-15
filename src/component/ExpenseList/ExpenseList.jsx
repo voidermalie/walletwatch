@@ -6,7 +6,7 @@ const ExpenseList = () => {
     const { state } = useFormContext();
     
     return (
-        <div>
+        <div className='expense-list'>
             {state.expenses.map((expense, id) => (
                 <Expense
                     key={id}
