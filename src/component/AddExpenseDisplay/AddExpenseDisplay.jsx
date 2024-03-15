@@ -9,7 +9,7 @@ const AddExpenseDisplay = () => {
       <form>
         <div className="input">
           <Input />
-          <CategoryList onSelect={() => {}}/>
+          <CategoryList onSelect={() => {}} initialValue=''/>
         </div>
         <button type='submit'>Add</button>
       </form>

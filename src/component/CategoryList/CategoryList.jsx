@@ -1,6 +1,6 @@
 import './CategoryList.css';
 
-const CategoryList = ({ onSelect }) => {
+const CategoryList = ({ onSelect, initialValue }) => {
 
   const categories = [
     'Food',
@@ -17,8 +17,8 @@ const CategoryList = ({ onSelect }) => {
   };
 
   return (
-    <select onChange={handleChange}>
-      <option value='' disabled selected>Select a category</option>
+    <select onChange={handleChange} value={initialValue}>
+      <option value='' disabled>Select a category</option>
       {categories.map((cat) => {
         return (
           <option key={cat} value={cat} required>

@@ -10,7 +10,7 @@ const TrackerDisplay = () => {
       </article>
       <article className='tracker-categories'>
         <h4>Categories</h4>
-        <CategoryList />
+        <CategoryList initialValue=''/>
       </article>
       <article className='tracker-all-expenses'>
 
