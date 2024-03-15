@@ -1,12 +1,13 @@
 export const initialState = {
     selectedCategory: '',
-    input: '',
+    expenseName: '',
+    expenseAmount: '',
     expenses: [],
 }
 
 
 const formReducer = (state, action) => {
-    const { amount, category } = action.payload;
+    const { name, amount, category } = action.payload;
 
     switch(action.type) {
         case 'SELECT_CATEGORY':
@@ -17,14 +18,15 @@ const formReducer = (state, action) => {
         case 'SET_INPUT':
             return {
                 ...state,
-                input: action.payload
+                [action.payload.name]: action.payload.value
             }
         case 'ADD_EXPENSE':
             console.log('Expense added:', action.payload);
             return {
                 ...state,
-                expenses: [...state.expenses, {amount, category, id: Date.now()}],
-                input: ''
+                expenses: [...state.expenses, {name, amount, category, id: Date.now()}],
+                expenseName: '',
+                expenseAmount: '',
             }
         default:
             return state;

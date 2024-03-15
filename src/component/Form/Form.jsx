@@ -5,7 +5,7 @@ import formReducer, { initialState } from '../../reducer/formReducer';
 import { useReducer } from 'react';
 
 const Form = () => {
-    const [state, dispatch] = useReducer(formReducer, initialState)
+  const [state, dispatch] = useReducer(formReducer, initialState);
 
   const handleSelect = (selectedValue) => {
     console.log('Selected value:', selectedValue);
@@ -15,42 +15,54 @@ const Form = () => {
     });
   };
 
-
   const handleInputChange = (e) => {
     dispatch({
       type: 'SET_INPUT',
-      payload: e.target.value
+      payload: {
+        name: e.target.name,
+        value: e.target.value,
+      },
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted!')
+    console.log('Form submitted!');
 
-    const { input, selectedCategory } = state;
+    const { expenseName, expenseAmount, selectedCategory } = state;
 
     dispatch({
       type: 'ADD_EXPENSE',
       payload: {
-        amount: input,
-        category: selectedCategory
+        name: expenseName,
+        amount: expenseAmount,
+        category: selectedCategory,
       },
     });
   };
 
   return (
-    <div className='formDisplay'>
+    <div className="formDisplay">
       <form onSubmit={handleSubmit}>
         <div className="input">
-          <Input inputValue={state.input} handleInputChange={handleInputChange}/>
+          <Input
+            name="expenseName"
+            placeholder='What'
+            inputValue={state.expenseName}
+            handleInputChange={handleInputChange}
+          />
+          <Input
+            name="expenseAmount"
+            placeholder='How much'
+            inputValue={state.expenseAmount}
+            handleInputChange={handleInputChange}
+          />
           <CategoryList
             onSelect={handleSelect}
             value={state.selectedCategory}
           />
         </div>
-        <button type="submit">
-          Add
-        </button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );

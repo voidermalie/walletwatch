@@ -1,11 +1,15 @@
-import './Input.css'
+import './Input.css';
 
-
-const Input = ({inputValue, handleInputChange}) => {
-
+const Input = ({ name, placeholder, inputValue, handleInputChange }) => {
   return (
-    <input type='text' value={inputValue} onChange={handleInputChange} />
-  )
-}
+    <input
+      type="text"
+      value={inputValue}
+      onChange={handleInputChange}
+      name={name}
+      placeholder={placeholder}
+    />
+  );
+};
 
-export default Input
+export default Input;
