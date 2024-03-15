@@ -1,45 +1,47 @@
 import './Form.css';
 import Input from '../Input/Input';
 import CategoryList from '../CategoryList/CategoryList';
-import formReducer, { initialState } from '../../reducer/formReducer';
-import { useReducer } from 'react';
+//import formReducer, { initialState } from '../../reducer/formReducer';
+//import { useReducer } from 'react';
+import { useFormContext } from '../../context/formContext';
 
 const Form = () => {
-  const [state, dispatch] = useReducer(formReducer, initialState);
 
-  const handleSelect = (selectedValue) => {
-    console.log('Selected value:', selectedValue);
-    dispatch({
-      type: 'SELECT_CATEGORY',
-      payload: selectedValue,
-    });
-  };
+    //const [state, dispatch] = useReducer(formReducer, initialState);
+    const { state, dispatch } = useFormContext();
 
-  const handleInputChange = (e) => {
-    dispatch({
-      type: 'SET_INPUT',
-      payload: {
-        name: e.target.name,
-        value: e.target.value,
-      },
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted!');
-
-    const { expenseName, expenseAmount, selectedCategory } = state;
-
-    dispatch({
-      type: 'ADD_EXPENSE',
-      payload: {
-        name: expenseName,
-        amount: expenseAmount,
-        category: selectedCategory,
-      },
-    });
-  };
+    const handleInputChange = (e) => {
+      dispatch({
+        type: 'SET_INPUT',
+        payload: {
+          name: e.target.name,
+          value: e.target.value,
+        },
+      });
+    };
+  
+    const handleSelect = (selectedValue) => {
+      dispatch({
+        type: 'SELECT_CATEGORY',
+        payload: selectedValue,
+      });
+    };
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log('Form submitted!');
+  
+      const { expenseName, expenseAmount, selectedCategory } = state;
+  
+      dispatch({
+        type: 'ADD_EXPENSE',
+        payload: {
+          name: expenseName,
+          amount: expenseAmount,
+          category: selectedCategory,
+        },
+      });
+    };
 
   return (
     <div className="formDisplay">
