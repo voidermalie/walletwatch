@@ -58,6 +58,7 @@ const Form = () => {
             placeholder='How much'
             inputValue={state.expenseAmount}
             handleInputChange={handleInputChange}
+            size='10'
           />
           <CategoryList
             onSelect={handleSelect}

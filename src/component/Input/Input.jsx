@@ -1,6 +1,6 @@
 import './Input.css';
 
-const Input = ({ name, placeholder, inputValue, handleInputChange }) => {
+const Input = ({ name, placeholder, inputValue, handleInputChange, size }) => {
   return (
     <input
       type="text"
@@ -8,6 +8,7 @@ const Input = ({ name, placeholder, inputValue, handleInputChange }) => {
       onChange={handleInputChange}
       name={name}
       placeholder={placeholder}
+      size={size}
     />
   );
 };
