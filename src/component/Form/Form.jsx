@@ -39,7 +39,7 @@ const Form = () => {
   };
 
   return (
-    <div>
+    <div className='formDisplay'>
       <form onSubmit={handleSubmit}>
         <div className="input">
           <Input inputValue={state.input} handleInputChange={handleInputChange}/>

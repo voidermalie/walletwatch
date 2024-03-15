@@ -9,11 +9,11 @@ const TrackerDisplay = () => {
         <h4>You have spent a total of 666€ this month !</h4>
       </article>
       <article className='tracker-categories'>
-        <h4>Categories</h4>
+        <h4>Expenses by category</h4>
         <CategoryList value=''/>
       </article>
       <article className='tracker-all-expenses'>
-
+        <h4>All expenses</h4>
       </article>
     </section>
   );

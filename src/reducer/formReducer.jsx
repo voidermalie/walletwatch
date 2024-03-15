@@ -23,7 +23,7 @@ const formReducer = (state, action) => {
             console.log('Expense added:', action.payload);
             return {
                 ...state,
-                expenses: [...state.expenses, {amount, category}],
+                expenses: [...state.expenses, {amount, category, id: Date.now()}],
                 input: ''
             }
         default:
